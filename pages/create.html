@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/createmain.min.css">
+</head>
+
+<body>
+    <header>
+        <header class="container">
+            <header class="content">
+                <nav>
+                    <ul>
+                        <li>Logo</li>
+                        <a href="./pradact.html">
+                            <li>products</li>
+                        </a>
+                        <a href="./category.html">
+                            <li>Category</li>
+                        </a>
+                        <a href="./profile.html">
+                            <li>Profile</li>
+                        </a>
+                        <a href="./create.html">
+                            <li>Add product</li>
+                        </a>
+                        <a href="./favo.html">
+                            <li>Favourites</li>
+                        </a>
+                    </ul>
+                </nav>
+            </header>
+        </header>
+    </header>
+    <section class="container">
+        <section>
+            <div class="create">
+                <h4>ID</h4>
+                <input class="id" type="number">
+                <h4>Image-url</h4>
+                <input class="file" type="text">
+                <h4>Title</h4>
+                <input class="title" type="text">
+                <h4>Decraption</h4>
+                <input class="decraption" type="text">
+                <button class="submit">Submit</button>
+            </div>
+            <div class="cards"></div>
+        </section>
+    </section>
+
+
+    <script>
+        let Elid = document.querySelector(".id");
+        let Eltitle = document.querySelector(".title");
+        let Elfile = document.querySelector(".file");
+        let Eldecraption = document.querySelector(".decraption");
+        let Elbtn = document.querySelector(".submit");
+        let Elcards = document.querySelector(".cards");
+
+        function createCard(card) {
+            let crId = document.createElement("h4");
+            let crTitle = document.createElement("h3");
+            let crPhoto = document.createElement("img");
+            let crDecraption = document.createElement("p");
+            let crDiv = document.createElement("div");
+            let crBtn = document.createElement("button");
+
+            crId.textContent = card.id;
+            crTitle.textContent = card.title;
+            crDecraption.textContent = card.decraption;
+            crPhoto.src = card.file;
+            crPhoto.style.width = "200px";
+
+            crBtn.textContent = "Delete";
+            crBtn.addEventListener("click", function () {
+                crDiv.remove();
+            });
+
+            crBtn.classList.add("del");
+            crDiv.classList.add("card");
+            crPhoto.classList.add("photo");
+
+            crDiv.appendChild(crId);
+            crDiv.appendChild(crPhoto);
+            crDiv.appendChild(crTitle);
+            crDiv.appendChild(crDecraption);
+            crDiv.appendChild(crBtn);
+
+            Elcards.appendChild(crDiv);
+        }
+
+        Elbtn.addEventListener("click", function () {
+            let idValue = Elid.value.trim();
+            let titleValue = Eltitle.value.trim();
+            let decraptionValue = Eldecraption.value.trim();
+            let fileValue = Elfile.value.trim();
+
+            if (!idValue || !titleValue || !decraptionValue || !fileValue) {
+                alert("Barcha maydonlarni to'ldiring!");
+                return;
+            }
+
+            let newCard = {
+                id: idValue,
+                title: titleValue,
+                decraption: decraptionValue,
+                file: fileValue,
+            };
+
+            createCard(newCard);
+
+            Elid.value = "";
+            Eltitle.value = "";
+            Elfile.value = "";
+            Eldecraption.value = "";
+        });
+    </script>
+
+</body>
+
+</html>

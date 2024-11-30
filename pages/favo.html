@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourites</title>
+    <link rel="stylesheet" href="../css/favomain.min.css">
+</head>
+
+<body>
+    <div id="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+    <header>
+        <header class="container">
+            <header class="content">
+                <nav>
+                    <ul>
+                        <a href="../index.html">
+                            <li>Logo</li>
+                        </a>
+                        <a href="./pradact.html">
+                            <li>products</li>
+                        </a>
+                        <a href="./category.html">
+                            <li>Category</li>
+                        </a>
+                        <a href="./profile.html">
+                            <li>Profile</li>
+                        </a>
+                        <a href="./create.html">
+                            <li>Add product</li>
+                        </a>
+                        <a href="./favo.html">
+                            <li>Favourites</li>
+                        </a>
+                    </ul>
+                </nav>
+            </header>
+        </header>
+    </header>
+    <div class="favo">
+        <h1>Liked Products</h1>
+    </div>
+</body>
+
+</html>
+<script>
+    const loading = document.getElementById("loading");
+    window.addEventListener("load", () => {
+        loading.classList.add('loading-none');
+    });
+    const likedProduct = JSON.parse(localStorage.getItem("likedProduct"));
+    if (likedProduct) {
+        const favoDiv = document.createElement("div");
+        favoDiv.style.backgroundColor = "#ccc";
+        favoDiv.style.padding = "20px";
+        favoDiv.style.borderRadius = "8px";
+        favoDiv.style.margin = "0 auto";
+        favoDiv.style.width = "300px";
+
+        let newlike = document.createElement("button");
+        newlike.style.backgroundColor = "red";
+        newlike.style.padding = "10px";
+        newlike.style.border = "none";
+        newlike.style.color = "white";
+        newlike.addEventListener("click", function () {
+            localStorage.removeItem("likedProduct");
+            favoDiv.remove();
+        })
+        newlike.textContent = "Liked";
+
+
+        const productName = document.createElement("h1");
+        productName.textContent = likedProduct.name;
+
+        const productInfo = document.createElement("h2");
+        productInfo.textContent = likedProduct.info;
+        productInfo.style.fontSize = "16px";
+        productInfo.style.fontWeight = "400";
+        productInfo.style.textAlign = "center";
+
+        const productPrice = document.createElement("p");
+        productPrice.textContent = `$${likedProduct.price.toFixed(2)}`;
+        productPrice.style.textAlign = "center";
+        productPrice.style.fontWeight = "600";
+
+        const productImg = document.createElement("img");
+        productImg.src = likedProduct.img;
+        productImg.style.textAlign = "center";
+        productImg.style.display = "flex";
+        productImg.style.flexDirection = "column";
+        productImg.style.alignItems = "center";
+        productImg.style.width = "300px";
+
+
+        favoDiv.appendChild(productImg);
+        favoDiv.appendChild(productName);
+        favoDiv.appendChild(productInfo);
+        favoDiv.appendChild(productPrice);
+        favoDiv.appendChild(newlike);
+
+
+        document.querySelector(".favo").appendChild(favoDiv);
+    }
+</script>

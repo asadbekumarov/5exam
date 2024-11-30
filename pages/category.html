@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+    <link rel="stylesheet" href="../css/categoeymain.min.css">
+</head>
+
+<body>
+    <header>
+        <header class="container">
+            <header class="content">
+                <nav>
+                    <ul>
+                        <li>Logo</li>
+                        <a href="./pradact.html">
+                            <li>Products</li>
+                        </a>
+                        <a href="./category.html">
+                            <li>Category</li>
+                        </a>
+                        <a href="./profile.html">
+                            <li>Profile</li>
+                        </a>
+                        <a href="./create.html">
+                            <li>Add Product</li>
+                        </a>
+                        <a href="./favo.html">
+                            <li>Favourites</li>
+                        </a>
+                    </ul>
+                </nav>
+            </header>
+        </header>
+    </header>
+    <div class="category">
+        <h3>Categories</h3>
+        <input placeholder="Enter new category name" type="text">
+        <button>Add Category</button>
+    </div>
+    <script>
+        let elbtn = document.querySelector("button");
+        elbtn.addEventListener("click", function () {
+            let newCategory = document.createElement("p");
+            newCategory.textContent = document.querySelector("input").value;
+            document.querySelector("input").value = "";
+
+            let newedit = document.createElement("button");
+            newedit.textContent = "Edit";
+            newedit.style.marginLeft = "10px";
+
+            newedit.addEventListener("click", function () {
+                let newCategoryName = prompt("Enter new category name", newCategory.textContent);
+                if (newCategoryName) {
+                    newCategory.textContent = newCategoryName;
+                    newCategory.appendChild(newedit);
+                }
+            });
+
+            document.querySelector(".category").appendChild(newCategory);
+            newCategory.appendChild(newedit);
+            newCategory.addEventListener("dblclick", function () {
+                newCategory.remove();
+            });
+        });
+    </script>
+</body>
+
+</html>

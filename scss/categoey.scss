@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "roboto";
+  src: url("../fonts/Roboto/Roboto-Regular.ttf");
+}
+body {
+  background-color: #f3f4f6;
+}
+header {
+  background-color: #1f2937;
+  padding: 6px;
+  .container {
+    max-width: 1300px;
+    padding: 0 16px;
+    margin: 0 auto;
+    .content {
+      nav {
+        ul {
+          display: flex;
+          justify-content: space-between;
+          li {
+            font-family: "roboto", arial;
+            list-style: none;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 28px;
+            cursor: pointer;
+          }
+          li:hover {
+            color: rgb(156, 163, 175);
+          }
+          li:active {
+            scale: 0.95;
+          }
+        }
+      }
+    }
+  }
+}
+.category {
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  width: 900px;
+  border-radius: 8px;
+  box-shadow: 0px -1px 8px 0px rgba(0, 0, 0, 0.29);
+  h3 {
+    font-family: "roboto", "Helvetica Neue";
+    color: rgb(31, 41, 55);
+    text-align: start;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+  }
+  input {
+    padding: 14px;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    input::placeholder {
+      color: #9caccb;
+    }
+  }
+  button {
+    margin-top: 20px;
+    font-family: "roboto";
+    background-color: #22c55e;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+  }
+}
