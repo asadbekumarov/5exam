@@ -38,8 +38,6 @@
     <section class="container">
         <section>
             <div class="create">
-                <h4>ID</h4>
-                <input class="id" type="number">
                 <h4>Image-url</h4>
                 <input class="file" type="text">
                 <h4>Title</h4>
@@ -54,7 +52,6 @@
 
 
     <script>
-        let Elid = document.querySelector(".id");
         let Eltitle = document.querySelector(".title");
         let Elfile = document.querySelector(".file");
         let Eldecraption = document.querySelector(".decraption");
@@ -62,14 +59,12 @@
         let Elcards = document.querySelector(".cards");
 
         function createCard(card) {
-            let crId = document.createElement("h4");
             let crTitle = document.createElement("h3");
             let crPhoto = document.createElement("img");
             let crDecraption = document.createElement("p");
             let crDiv = document.createElement("div");
             let crBtn = document.createElement("button");
 
-            crId.textContent = card.id;
             crTitle.textContent = card.title;
             crDecraption.textContent = card.decraption;
             crPhoto.src = card.file;
@@ -84,7 +79,6 @@
             crDiv.classList.add("card");
             crPhoto.classList.add("photo");
 
-            crDiv.appendChild(crId);
             crDiv.appendChild(crPhoto);
             crDiv.appendChild(crTitle);
             crDiv.appendChild(crDecraption);
@@ -94,18 +88,16 @@
         }
 
         Elbtn.addEventListener("click", function () {
-            let idValue = Elid.value.trim();
             let titleValue = Eltitle.value.trim();
             let decraptionValue = Eldecraption.value.trim();
             let fileValue = Elfile.value.trim();
 
-            if (!idValue || !titleValue || !decraptionValue || !fileValue) {
+            if (!titleValue || !decraptionValue || !fileValue) {
                 alert("Barcha maydonlarni to'ldiring!");
                 return;
             }
 
             let newCard = {
-                id: idValue,
                 title: titleValue,
                 decraption: decraptionValue,
                 file: fileValue,
@@ -113,7 +105,6 @@
 
             createCard(newCard);
 
-            Elid.value = "";
             Eltitle.value = "";
             Elfile.value = "";
             Eldecraption.value = "";

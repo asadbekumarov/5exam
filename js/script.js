@@ -73,7 +73,7 @@
 //   .catch((error) => console.error("Error:", error));
 let Elwrapper = document.querySelector(".wrapper");
 let Elinput = document.querySelector("input");
-let loading = document.getElementById("loading"); 
+let loading = document.getElementById("loading");
 
 (async function () {
   loading.style.display = "block";
