@@ -103,6 +103,34 @@ let loading = document.getElementById("loading");
           let newb = document.createElement("h3");
           let newpi = document.createElement("p");
 
+          let newdel = document.createElement("button");
+          newdel.textContent = "Delete";
+          newdel.style.marginTop = "10px";
+          newdel.style.backgroundColor = "#000";
+          newdel.style.color = "#fff";
+          newdel.style.border = "none";
+          newdel.style.padding = "10px";
+          newdel.style.borderRadius = "10px";
+          newdel.style.marginLeft = "10px";
+          newdel.addEventListener("click", () => {
+            newdiv.remove();
+          });
+          let newlike = document.createElement("button");
+          newlike.textContent = "Like";
+          newlike.style.marginTop = "10px";
+          newlike.style.backgroundColor = "#ff5722";
+          newlike.style.color = "#fff";
+          newlike.style.border = "none";
+          newlike.style.padding = "10px";
+          newlike.style.borderRadius = "10px";
+          newlike.addEventListener("click", () => {
+            localStorage.setItem("likedProduct", JSON.stringify(product));
+
+            alert("qowildi");
+
+            window.location.href = "./favo.html";
+          });
+
           newpi.classList.add("newpi");
           newp.classList.add("newp");
           newb.classList.add("newb");
@@ -119,6 +147,8 @@ let loading = document.getElementById("loading");
           newdiv.appendChild(newimg);
           newdiv.appendChild(newb);
           newdiv.appendChild(newh3);
+          newdiv.appendChild(newdel);
+          newdiv.appendChild(newlike);
           newdiv.appendChild(newp);
 
           Elwrapper.appendChild(newdiv);
