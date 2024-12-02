@@ -71,6 +71,7 @@
 //     });
 //   })
 //   .catch((error) => console.error("Error:", error));
+/////////////////////////////////////////////////
 let Elwrapper = document.querySelector(".wrapper");
 let Elinput = document.querySelector("input");
 let loading = document.getElementById("loading");
@@ -79,7 +80,13 @@ let loading = document.getElementById("loading");
   loading.style.display = "block";
   try {
     let response = await fetch("https://fakestoreapi.com/products");
-    let products = await response.json();
+
+    let apiProducts = await response.json();
+    console.log(apiProducts);
+
+    let localProducts = JSON.parse(localStorage.getItem("products")) || [];
+
+    let products = [...localProducts, ...apiProducts];
     loading.style.display = "none";
 
     function filterProducts() {
@@ -103,11 +110,10 @@ let loading = document.getElementById("loading");
           newimg.classList.add("newimg");
           newdiv.classList.add("product");
 
-          newpi.textContent = product.id;
-          newb.textContent = product.category;
-          newimg.src = product.image;
+          newb.textContent = product.category || "Custom";
+          newimg.src = product.file || product.image;
           newh3.textContent = product.title;
-          newp.textContent = `$${product.price}`;
+          newp.textContent = `$${product.price || "N/A"}`;
 
           newdiv.appendChild(newpi);
           newdiv.appendChild(newimg);
@@ -120,6 +126,7 @@ let loading = document.getElementById("loading");
     }
 
     Elinput.addEventListener("input", filterProducts);
+
     filterProducts();
   } catch (error) {
     console.error("Error:", error);
